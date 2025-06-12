@@ -1,0 +1,145 @@
+:root {
+  --light: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --dark: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --lightred: hsl(3, 86%, 64%);
+  --red: hsl(3, 71%, 56%);
+  --darkred: hsl(3, 77%, 44%);
+  --blue: hsl(227, 75%, 14%);
+  --grey: hsl(0, 0%, 78%);
+  --white: hsl(200, 60%, 99%);
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf");
+}
+
+body {
+  background: var(--light);
+  width: 80%;
+  /* height: 100vh; */
+  margin: 0 auto;
+  padding-top: 3vh;
+  font-family: "Noto Sans";
+}
+
+button {
+  transition: 500ms;
+}
+
+button:active,
+button:focus-visible {
+  outline-offset: 2px;
+  outline: 3px solid var(--red);
+}
+
+header {
+  background-color: var(--white);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(57, 56, 56, 0.08);
+}
+
+header button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: hsl(0, 0%, 93%);
+}
+
+header button:hover {
+  background-color: var(--grey);
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2vh 0vh;
+}
+
+nav h2,
+.extension-name {
+  color: var(--blue);
+}
+
+nav button,
+.remove-btn {
+  color: var(--blue);
+  padding: 8px 15px;
+  border-radius: 30px;
+  border: 0.5px solid var(--grey);
+  font-size: 18px;
+  background-color: var(--white);
+}
+
+nav button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+nav button + button {
+  margin-left: 10px;
+}
+
+.active-button {
+  background-color: var(--red);
+  color: #fff;
+}
+
+.extension-list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.extension-card {
+  padding: 10px;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(57, 56, 56, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3vh;
+}
+
+.extension-description {
+  width: 80%;
+}
+
+img {
+  width: fit-content;
+  height: fit-content;
+}
+
+.extension-name {
+  margin: 0px;
+}
+
+.extension-description > p {
+  margin-top: 5px;
+  color: gray;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-btn {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.remove-btn:hover {
+  background-color: var(--red);
+  cursor: pointer;
+  color: #fff;
+}

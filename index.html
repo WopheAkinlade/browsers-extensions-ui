@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Frontend Mentor | Browser extensions manager UI</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="./assets/images/logo.svg" alt="" />
+
+      <button>
+        <img src="./assets/images/icon-moon.svg" alt="Toggle color theme" />
+      </button>
+    </header>
+
+    <nav>
+      <h2>Extensions List</h2>
+
+      <span>
+        <button class="active-button" id="all">All</button>
+        <button id="active">Active</button>
+        <button id="inactive">Inactive</button>
+      </span>
+    </nav>
+
+    <!-- If you plan to use the JSON file to populate the data dynamically, you can change the content below -->
+    <section class="extension-list">
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-devlens.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">DevLens</h3>
+            <p>
+              Quickly inspect page layouts and visualize element boundaries.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-style-spy.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">StyleSpy</h3>
+            <p>Instantly analyze and copy CSS from any webpage element.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-speed-boost.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">SpeedBoost</h3>
+            <p>Optimizes browser resource usage to accelerate page loading.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-json-wizard.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">JSONWizard</h3>
+            <p>Formats, validates, and prettifies JSON responses in-browser.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-tab-master-pro.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">TabMaster Pro</h3>
+            <p>Organizes browser tabs into groups and sessions.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-viewport-buddy.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">ViewportBuddy</h3>
+            <p>
+              Simulates various screen resolutions directly within the browser.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-markup-notes.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">Markup Notes</h3>
+            <p>
+              Enables annotation and notes directly onto webpages for
+              collaborative debugging.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-grid-guides.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">GridGuides</h3>
+            <p>
+              Overlay customizable grids and alignment guides on any webpage.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-palette-picker.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">Palette Picker</h3>
+            <p>Instantly extracts color palettes from any webpage.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-link-checker.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">LinkChecker</h3>
+            <p>Scans and highlights broken links on any page.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-dom-snapshot.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">DOMSnapshot</h3>
+            <p>Capture and export DOM structures quickly.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+
+      <div class="extension-card">
+        <div class="card-header">
+          <img src="./assets/images/logo-console-plus.svg" alt="" />
+          <div class="extension-description">
+            <h3 class="extension-name">ConsolePlus</h3>
+            <p>
+              Enhanced developer console with advanced filtering and logging.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="remove-btn" id="remove">Remove</button>
+          <button id="toggle"><!-- Add rolly button --></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Wofe Akinlade</a>.
+    </div>
+  </body>
+</html>
