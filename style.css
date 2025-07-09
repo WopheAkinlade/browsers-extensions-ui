@@ -98,16 +98,18 @@ nav button + button {
 }
 
 .extension-card {
+  height: 150px;
   padding: 10px;
   background-color: var(--white);
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(57, 56, 56, 0.08);
+  position: relative;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3vh;
+  /* margin-bottom: 3vh; */
 }
 
 .extension-description {
@@ -129,8 +131,12 @@ img {
 }
 
 .card-footer {
+  width: 95%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
 }
 
 .remove-btn {
@@ -147,8 +153,8 @@ img {
 .toggle {
   display: block;
   background-color: #d4d4d4;
-  width: 65px;
-  height: 33px;
+  width: 40px;
+  height: 20px;
   border-radius: 50px;
   position: relative;
   cursor: pointer;
@@ -157,21 +163,21 @@ img {
 
 .toggle::before {
   content: " ";
-  height: 23px;
-  width: 23px;
+  height: 15px;
+  width: 15px;
   background-color: #fff;
   border-radius: 50%;
   position: absolute;
-  margin: 5px;
+  margin: 2px;
   transition: 0.2s;
 }
 
 input:checked + .toggle {
-  background-color: red;
+  background-color: var(--red);
 }
 
 input:checked + .toggle::before {
-  transform: translateX(33px);
+  transform: translateX(20px);
 }
 
 input {
