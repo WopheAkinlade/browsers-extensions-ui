@@ -143,3 +143,37 @@ img {
   cursor: pointer;
   color: #fff;
 }
+
+.toggle {
+  display: block;
+  background-color: #d4d4d4;
+  width: 65px;
+  height: 33px;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle::before {
+  content: " ";
+  height: 23px;
+  width: 23px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  margin: 5px;
+  transition: 0.2s;
+}
+
+input:checked + .toggle {
+  background-color: red;
+}
+
+input:checked + .toggle::before {
+  transform: translateX(33px);
+}
+
+input {
+  display: none;
+}
