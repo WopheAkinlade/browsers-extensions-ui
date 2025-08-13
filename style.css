@@ -1,12 +1,24 @@
 :root {
-  --light: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
-  --dark: linear-gradient(180deg, #040918 0%, #091540 100%);
-  --lightred: hsl(3, 86%, 64%);
+  --bg-color: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --bg-secondary: hsl(0, 0%, 93%); 
+  --light-red: hsl(3, 86%, 64%);
   --red: hsl(3, 71%, 56%);
-  --darkred: hsl(3, 77%, 44%);
-  --blue: hsl(227, 75%, 14%);
-  --grey: hsl(0, 0%, 78%);
-  --white: hsl(200, 60%, 99%);
+  --dark-red: hsl(3, 77%, 44%);
+  --secondary: hsl(227, 75%, 14%);
+  --text-color: hsl(226, 11%, 37%);
+  --base-color: hsl(200, 60%, 99%);
+  --border-color: hsl(217, 61%, 90%);
+  --red-variant: var(--dark-red);
+}
+
+.darkmode {
+  --bg-color: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --base-color: hsl(226, 25%, 17%);
+  --secondary: hsl(0, 0%, 93%);
+  --border-color: hsl(226, 11%, 37%);
+  --text-color: hsl(226, 9%, 53%);
+  --bg-secondary: var(--border-color);
+  --red-variant: var(--light-red)
 }
 
 @font-face {
@@ -15,7 +27,7 @@
 }
 
 body {
-  background: var(--light);
+  background: var(--bg-color);
   width: 80%;
   /* height: 100vh; */
   margin: 0 auto;
@@ -34,7 +46,7 @@ button:focus-visible {
 }
 
 header {
-  background-color: var(--white);
+  background-color: var(--base-color);
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -46,11 +58,11 @@ header button {
   border: none;
   border-radius: 10px;
   padding: 10px;
-  background-color: hsl(0, 0%, 93%);
+  background-color: var(--bg-secondary);
 }
 
 header button:hover {
-  background-color: var(--grey);
+  background-color: var(--text-color);
   cursor: pointer;
 }
 
@@ -63,17 +75,18 @@ nav {
 
 nav h2,
 .extension-name {
-  color: var(--blue);
+  color: var(--secondary);
 }
 
 nav button,
 .remove-btn {
-  color: var(--blue);
+  color: var(--secondary);
   padding: 8px 15px;
   border-radius: 30px;
-  border: 0.5px solid var(--grey);
+  border: 2px solid var(--border-color);
   font-size: 18px;
-  background-color: var(--white);
+  background-color: var(--base-color);
+  box-shadow: 0 4px 6px rgba(57, 56, 56, 0.08);
 }
 
 nav button:hover {
@@ -86,8 +99,10 @@ nav button + button {
 }
 
 .active-button {
-  background-color: var(--red);
-  color: #fff;
+  background-color: var(--red-variant);
+  color: var(--base-color);
+  box-shadow: none;
+  border: none;
 }
 
 .extension-list {
@@ -100,7 +115,8 @@ nav button + button {
 .extension-card {
   height: 150px;
   padding: 10px;
-  background-color: var(--white);
+  background-color: var(--base-color);
+  border: 1px solid var(--border-color);
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(57, 56, 56, 0.08);
   position: relative;
@@ -127,7 +143,7 @@ img {
 
 .extension-description > p {
   margin-top: 5px;
-  color: gray;
+  color: var(--text-color);
 }
 
 .card-footer {
@@ -142,6 +158,13 @@ img {
 .remove-btn {
   font-size: 0.9em;
   font-weight: 600;
+  background-color: transparent;
+  box-shadow: none;
+  border: 1px solid hsl(0, 0%, 78%);
+}
+
+.darkmode .remove-btn {
+  border: 1px solid var(--border-color);
 }
 
 .remove-btn:hover {
@@ -173,7 +196,7 @@ img {
 }
 
 input:checked + .toggle {
-  background-color: var(--red);
+  background-color: var(--red-variant);
 }
 
 input:checked + .toggle::before {
