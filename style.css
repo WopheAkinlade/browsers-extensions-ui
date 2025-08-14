@@ -54,6 +54,10 @@ header {
   box-shadow: 0 4px 6px rgba(57, 56, 56, 0.08);
 }
 
+.logo-text{
+  fill: var(--secondary);
+}
+
 header button {
   border: none;
   border-radius: 10px;
@@ -160,10 +164,6 @@ img {
   font-weight: 600;
   background-color: transparent;
   box-shadow: none;
-  border: 1px solid hsl(0, 0%, 78%);
-}
-
-.darkmode .remove-btn {
   border: 1px solid var(--border-color);
 }
 
