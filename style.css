@@ -1,5 +1,6 @@
 :root {
   --bg-color: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --bg-primary: hsl(0, 0%, 78%);
   --bg-secondary: hsl(0, 0%, 93%); 
   --light-red: hsl(3, 86%, 64%);
   --red: hsl(3, 71%, 56%);
@@ -8,7 +9,8 @@
   --text-color: hsl(226, 11%, 37%);
   --base-color: hsl(200, 60%, 99%);
   --border-color: hsl(217, 61%, 90%);
-  --red-variant: var(--dark-red);
+  --red-variant1: var(--dark-red);
+  --red-variant2: var(--light-red);
 }
 
 .darkmode {
@@ -17,8 +19,10 @@
   --secondary: hsl(0, 0%, 93%);
   --border-color: hsl(226, 11%, 37%);
   --text-color: hsl(226, 9%, 53%);
-  --bg-secondary: var(--border-color);
-  --red-variant: var(--light-red)
+  --bg-primary: var(--border-color);
+  --bg-secondary: hsl(225, 23%, 24%);
+  --red-variant1: var(--light-red);
+  --red-variant2: var(--red)
 }
 
 @font-face {
@@ -67,7 +71,7 @@ header button {
 }
 
 header button:hover {
-  background-color: var(--text-color);
+  background-color: var(--bg-primary);
   cursor: pointer;
 }
 
@@ -112,15 +116,24 @@ nav button:hover {
   cursor: pointer;
 }
 
+.darkmode nav button:hover {
+  opacity: 1;
+  background-color: var(--bg-primary);
+}
+
 nav button + button {
   margin-left: 10px;
 }
 
 .active-button {
-  background-color: var(--red-variant);
+  background-color: var(--red-variant1);
   color: var(--base-color);
   box-shadow: none;
   border: none;
+}
+
+.active-button:hover{
+  background-color: var(--red-variant2) !important;
 }
 
 .extension-list {
@@ -175,21 +188,20 @@ img {
 
 .remove-btn {
   font-size: 0.9em;
-  font-weight: 600;
   background-color: transparent;
   box-shadow: none;
   border: 1px solid var(--border-color);
 }
 
 .remove-btn:hover {
-  background-color: var(--red);
+  background-color: var(--red-variant1);
   cursor: pointer;
   color: #fff;
 }
 
 .toggle {
   display: block;
-  background-color: #d4d4d4;
+  background-color: var(--bg-primary);
   width: 40px;
   height: 20px;
   border-radius: 50px;
@@ -210,7 +222,11 @@ img {
 }
 
 input:checked + .toggle {
-  background-color: var(--red-variant);
+  background-color: var(--red-variant1);
+}
+
+input:checked + .toggle:hover{
+  background-color: var(--red-variant2);
 }
 
 input:checked + .toggle::before {
