@@ -63,11 +63,25 @@ header button {
   border-radius: 10px;
   padding: 10px;
   background-color: var(--bg-secondary);
+  
 }
 
 header button:hover {
   background-color: var(--text-color);
   cursor: pointer;
+}
+
+button img:last-child{
+  display: none;
+}
+
+.darkmode button img:first-child{
+  display: none;
+  
+}
+
+.darkmode button img:last-child{
+  display: block;
 }
 
 nav {
