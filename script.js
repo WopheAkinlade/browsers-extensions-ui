@@ -1,7 +1,12 @@
 const main = document.getElementById("main");
 const themeBtn = document.getElementById("toggleTheme");
+const allBtn = document.getElementById("all");
+const activeBtn = document.getElementById("active");
+const inactiveBtn = document.getElementById("inactive");
+const buttons = [allBtn, activeBtn, inactiveBtn];
 let darkmode = localStorage.getItem("darkmode");
 
+// Dark mode logic starts here
 const enableDarkMode = () => {
   document.body.classList.add("darkmode");
   localStorage.setItem("darkmode", "active");
@@ -18,7 +23,24 @@ themeBtn.addEventListener("click", () => {
   darkmode = localStorage.getItem("darkmode");
   darkmode !== "active" ? enableDarkMode() : disableDarkMode();
 });
+// Dark mode logic ends here
 
+// Mode switching logic starts here
+const switchModes = (button) => {
+  buttons.forEach((item) => {
+    if (item.classList.contains("current-mode"))
+      item.classList.remove("current-mode");
+  });
+
+  button.classList.toggle("current-mode");
+};
+
+buttons.forEach((item) =>
+  item.addEventListener("click", (e) => switchModes(e.target))
+);
+// Mode switching logic ends here
+
+// Dynamic extension rendering logic starts here
 /**
  * Function creates an element with the given parameters and returns the element
  * @param {string} tag - the suitable HTML tag for this element
@@ -79,8 +101,10 @@ fetch("data.json")
   .then((response) => response.json())
   .then((data) => {
     // You can work with the parsed JSON data here
-    data.forEach(item => main.appendChild(cardBuilder(item)))
+    data.forEach((item) => main.appendChild(cardBuilder(item)));
   })
   .catch((error) => {
     console.error("Error loading JSON:", error);
   });
+
+// Dynamic extension rendering logic ends here

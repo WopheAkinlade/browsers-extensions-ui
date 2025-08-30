@@ -125,14 +125,14 @@ nav button + button {
   margin-left: 10px;
 }
 
-.active-button {
+.current-mode {
   background-color: var(--red-variant1);
   color: var(--base-color);
   box-shadow: none;
   border: none;
 }
 
-.active-button:hover{
+.current-mode:hover{
   background-color: var(--red-variant2) !important;
 }
 
