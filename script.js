@@ -4,7 +4,9 @@ const allBtn = document.getElementById("all");
 const activeBtn = document.getElementById("active");
 const inactiveBtn = document.getElementById("inactive");
 const buttons = [allBtn, activeBtn, inactiveBtn];
-let darkmode = localStorage.getItem("darkmode");
+// Initialising the localStorage variable that determines color mode
+let darkmode = localStorage.getItem("darkmode"); 
+let listMode = "all";
 
 // Dark mode logic starts here
 const enableDarkMode = () => {
@@ -26,6 +28,10 @@ themeBtn.addEventListener("click", () => {
 // Dark mode logic ends here
 
 // Mode switching logic starts here
+/**
+ * Function for filtering the extensions as needed
+ * @param {HTMLButtonElement} button - Button for filtering rendered extensions
+ */
 const switchModes = (button) => {
   buttons.forEach((item) => {
     if (item.classList.contains("current-mode"))
@@ -33,6 +39,9 @@ const switchModes = (button) => {
   });
 
   button.classList.toggle("current-mode");
+  listMode = button.innerText.toLowerCase();
+  main.replaceChildren();
+  renderExtensions(listMode);
 };
 
 buttons.forEach((item) =>
@@ -97,14 +106,31 @@ const cardBuilder = (data) => {
   return card;
 };
 
-fetch("data.json")
-  .then((response) => response.json())
-  .then((data) => {
-    // You can work with the parsed JSON data here
-    data.forEach((item) => main.appendChild(cardBuilder(item)));
-  })
-  .catch((error) => {
-    console.error("Error loading JSON:", error);
-  });
+/**
+ * Function renders the desired extensions depending on the given condition 
+ * @param {string} mode - all | active | inactive
+ */
+const renderExtensions = (mode) => {
+  fetch("data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      // You can work with the parsed JSON data here
+      
+      if (mode === "inactive") {
+        const exts = data.filter((item) => item.isActive === false);
+        exts.forEach((item) => main.appendChild(cardBuilder(item)));     
+      } else if (mode === "active") {
+        const exts = data.filter((item) => item.isActive === true);
+        exts.forEach((item) => main.appendChild(cardBuilder(item)));
+      } else {
+        data.forEach((item) => main.appendChild(cardBuilder(item)));
+      }
+    })
+    .catch((error) => {
+      console.error("Error loading JSON:", error);
+    });
+};
+
+renderExtensions(listMode);
 
 // Dynamic extension rendering logic ends here
