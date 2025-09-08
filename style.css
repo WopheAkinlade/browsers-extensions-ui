@@ -33,7 +33,7 @@
 body {
   background: var(--bg-color);
   width: 80%;
-  /* height: 100vh; */
+  /* height: clamp(98vw,fit-content,  max-content); */
   margin: 0 auto;
   padding-top: 3vh;
   font-family: "Noto Sans";

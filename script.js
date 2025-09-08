@@ -5,8 +5,18 @@ const activeBtn = document.getElementById("active");
 const inactiveBtn = document.getElementById("inactive");
 const buttons = [allBtn, activeBtn, inactiveBtn];
 // Initialising the localStorage variable that determines color mode
-let darkmode = localStorage.getItem("darkmode"); 
+let darkmode = localStorage.getItem("darkmode");
 let listMode = "all";
+let extensions = [];
+
+const loadExtensions = async () => {
+  const response = await fetch("data.json");
+  extensions = await response.json();
+  renderExtensions(listMode)
+  console.log("Func")
+};
+
+loadExtensions();
 
 // Dark mode logic starts here
 const enableDarkMode = () => {
@@ -40,7 +50,6 @@ const switchModes = (button) => {
 
   button.classList.toggle("current-mode");
   listMode = button.innerText.toLowerCase();
-  main.replaceChildren();
   renderExtensions(listMode);
 };
 
@@ -69,19 +78,19 @@ const createElement = (tag, className, content) => {
  * @param {object} data - object containing `logo`, `img`, `description` keys and values
  * @returns HTML element contain
  */
-const cardBuilder = (data) => {
+const cardBuilder = (item) => {
   const card = createElement("div", "extension-card");
   const cardHead = createElement("div", "card-header");
   const cardDesc = createElement("div", "extension-description");
   const cardFooter = createElement("div", "card-footer");
 
   const img = createElement("img");
-  img.src = data.logo;
-  img.alt = data.name;
+  img.src = item.logo;
+  img.alt = item.name;
 
-  const title = createElement("h3", "extension-name", data.name);
+  const title = createElement("h3", "extension-name", item.name);
 
-  const desc = createElement("p", null, data.description);
+  const desc = createElement("p", null, item.description);
 
   cardDesc.append(title, desc);
 
@@ -94,7 +103,14 @@ const cardBuilder = (data) => {
 
   const slider = createElement("input");
   slider.setAttribute("type", "checkbox");
-  slider.id = "toggle";
+  slider.checked = item.isActive;
+  // Checkbox logic starts here
+  slider.addEventListener("click", () => {
+    item.isActive = slider.checked;
+    console.log("Before render: " + item.name, item.isActive);
+    renderExtensions(listMode);
+  });
+  // Checkbox logic ends here
 
   const circle = createElement("span", "toggle");
 
@@ -107,30 +123,21 @@ const cardBuilder = (data) => {
 };
 
 /**
- * Function renders the desired extensions depending on the given condition 
+ * Function renders the desired extensions depending on the given condition
  * @param {string} mode - all | active | inactive
  */
 const renderExtensions = (mode) => {
-  fetch("data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      // You can work with the parsed JSON data here
-      
-      if (mode === "inactive") {
-        const exts = data.filter((item) => item.isActive === false);
-        exts.forEach((item) => main.appendChild(cardBuilder(item)));     
-      } else if (mode === "active") {
-        const exts = data.filter((item) => item.isActive === true);
-        exts.forEach((item) => main.appendChild(cardBuilder(item)));
-      } else {
-        data.forEach((item) => main.appendChild(cardBuilder(item)));
-      }
-    })
-    .catch((error) => {
-      console.error("Error loading JSON:", error);
-    });
+  main.replaceChildren();
+
+  if (mode === "inactive") {
+    const exts = extensions.filter((item) => item.isActive === false);
+    exts.forEach((item) => main.appendChild(cardBuilder(item)));
+  } else if (mode === "active") {
+    const exts = extensions.filter((item) => item.isActive === true);
+    exts.forEach((item) => main.appendChild(cardBuilder(item)));
+  } else {
+    extensions.forEach((item) => main.appendChild(cardBuilder(item)));
+
+  }
 };
-
-renderExtensions(listMode);
-
 // Dynamic extension rendering logic ends here
