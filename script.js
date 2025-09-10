@@ -119,6 +119,7 @@ const cardBuilder = (item) => {
   cardFooter.append(btn, label);
 
   card.append(cardHead, cardFooter);
+  requestAnimationFrame(() => card.classList.add("show")) // adds the show class after the browser has rendered to produce animation effect
   return card;
 };
 
@@ -137,7 +138,6 @@ const renderExtensions = (mode) => {
     exts.forEach((item) => main.appendChild(cardBuilder(item)));
   } else {
     extensions.forEach((item) => main.appendChild(cardBuilder(item)));
-
   }
 };
 // Dynamic extension rendering logic ends here

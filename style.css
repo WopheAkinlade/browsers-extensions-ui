@@ -1,5 +1,6 @@
 :root {
   --bg-color: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --bg-color-dark: linear-gradient(180deg, #040918 0%, #091540 100%);
   --bg-primary: hsl(0, 0%, 78%);
   --bg-secondary: hsl(0, 0%, 93%); 
   --light-red: hsl(3, 86%, 64%);
@@ -13,6 +14,21 @@
   --red-variant2: var(--light-red);
 }
 
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf");
+}
+
+@keyframes bg-transition {
+  from{
+    background: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  }
+
+  to{
+    background: var(--bg-color);
+  }
+}
+
 .darkmode {
   --bg-color: linear-gradient(180deg, #040918 0%, #091540 100%);
   --base-color: hsl(226, 25%, 17%);
@@ -22,18 +38,18 @@
   --bg-primary: var(--border-color);
   --bg-secondary: hsl(225, 23%, 24%);
   --red-variant1: var(--light-red);
-  --red-variant2: var(--red)
+  --red-variant2: var(--red);
+  animation: bg-transition 0.3s ease;
 }
 
-@font-face {
-  font-family: "Noto Sans";
-  src: url("./assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf");
+*{
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body {
   background: var(--bg-color);
   width: 80%;
-  /* height: clamp(98vw,fit-content,  max-content); */
+  min-height: 97vh;
   margin: 0 auto;
   padding-top: 3vh;
   font-family: "Noto Sans";
@@ -152,6 +168,19 @@ nav button + button {
   box-shadow: 0 4px 6px rgba(57, 56, 56, 0.08);
   position: relative;
 }
+
+/*Styles for animation starts here  */
+.extension-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.extension-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/*Styles for animation ends here  */
 
 .card-header {
   display: flex;
