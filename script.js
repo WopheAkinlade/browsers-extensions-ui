@@ -13,7 +13,6 @@ const loadExtensions = async () => {
   const response = await fetch("data.json");
   extensions = await response.json();
   renderExtensions(listMode)
-  console.log("Func")
 };
 
 loadExtensions();
@@ -107,8 +106,7 @@ const cardBuilder = (item) => {
   // Checkbox logic starts here
   slider.addEventListener("click", () => {
     item.isActive = slider.checked;
-    console.log("Before render: " + item.name, item.isActive);
-    renderExtensions(listMode);
+    if(listMode !== "all") renderExtensions(listMode);
   });
   // Checkbox logic ends here
 
