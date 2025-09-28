@@ -265,3 +265,35 @@ input:checked + .toggle::before {
 input {
   display: none;
 }
+
+
+@media(max-width: 500px){
+  body{
+    width: 90vw;
+  }
+
+  nav{
+    flex-direction: column;
+  }
+
+  .extension-list {
+    grid-template-columns: auto;
+    row-gap: 20px;
+  }
+
+  .extension-name{
+    font-size: 1.2rem;
+  }
+
+  .card-header{
+    gap: 12px;
+  }
+
+  .extension-description > p{
+    font-size: 0.9rem;
+  }
+
+  .card-footer{
+    width: 90%;
+  }
+}
